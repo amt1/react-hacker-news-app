@@ -10,13 +10,14 @@ class NewsContainer extends Component {
       news: [],
       filteredNews: []
     }
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   render(){
     return (
       <div>
         <SearchBar onSubmit={this.handleSubmit}/>
-        <ListNews news={this.state.news} />
+        <ListNews news={this.state.filteredNews} />
       </div>
     );
   }
@@ -42,7 +43,11 @@ class NewsContainer extends Component {
       }
 
       handleSubmit(evt){
-          console.log(evt.target.keyword.value);
+          const filtered = this.state.news.filter((newsItem) => {
+            return newsItem.title.toLowerCase().includes(evt.target.keyword.value.toLowerCase());
+          })
+          this.setState({filteredNews: filtered});
+          console.log(filtered);
       }
 }
 export default NewsContainer;
