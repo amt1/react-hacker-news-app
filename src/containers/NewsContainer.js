@@ -26,11 +26,11 @@ class NewsContainer extends Component {
           return fetch(url);
         }))
         .then((res) => {
-          return res.map((res1) => {
-            return res1.json();
-          })
+          return Promise.all(res.map((p) => {
+            return p.json();
+          }))
+          .then( (newsItems) => this.setState({ news: newsItems}));
         })
-        .then((res) => {this.setState({news: res})})
       })
 
       }
