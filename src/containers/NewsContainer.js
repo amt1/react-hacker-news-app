@@ -15,9 +15,12 @@ class NewsContainer extends Component {
 
   render(){
     return (
-      <div>
-        <SearchBar onSubmit={this.handleSubmit}/>
-        <ListNews news={this.state.filteredNews} />
+      <div id="news-container">
+        <h1>Hacker News Search</h1>
+        <hr />
+        <SearchBar onSubmit={this.handleSubmit} loaded={this.state.news.length}/>
+        <hr />
+        <ListNews filteredNews={this.state.filteredNews} allNews={this.state.news} />
       </div>
     );
   }
@@ -36,7 +39,7 @@ class NewsContainer extends Component {
           return Promise.all(res.map((p) => {
             return p.json();
           }))
-          .then( (newsItems) => this.setState({ news: newsItems}));
+          .then( (newsItems) => this.setState({ news: newsItems, filteredNews: newsItems}));
         })
       })
 
@@ -47,7 +50,7 @@ class NewsContainer extends Component {
             return newsItem.title.toLowerCase().includes(evt.target.keyword.value.toLowerCase());
           })
           this.setState({filteredNews: filtered});
-          console.log(filtered);
+          evt.target.reset();
       }
 }
 export default NewsContainer;

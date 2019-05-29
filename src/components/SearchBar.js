@@ -8,8 +8,13 @@ const SearchBar = (props) => {
   }
   return (
     <div>
+      <h2>Enter Keyword to Search:</h2>
       <form id="searchform" name="searchform" onSubmit={onSubmit} method = '' >
-        <input name="keyword" type="text" />
+        <input
+                name="keyword" type="text" 
+                disabled = {!props.loaded}
+                placeholder={!props.loaded ? "Still loading..." : "Enter Keyword"}
+        />
       </form>
     </div>
   )
