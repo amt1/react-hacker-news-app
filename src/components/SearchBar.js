@@ -3,6 +3,7 @@ import React from 'react';
 const SearchBar = (props) => {
   const onSubmit = (evt) =>{
     evt.preventDefault();
+    evt.persist();
     props.onSubmit(evt);
   }
   return (

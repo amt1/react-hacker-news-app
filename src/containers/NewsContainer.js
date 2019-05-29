@@ -42,7 +42,7 @@ class NewsContainer extends Component {
       }
 
       handleSubmit(evt){
-          console.log(evt);
+          console.log(evt.target.keyword.value);
       }
 }
 export default NewsContainer;
