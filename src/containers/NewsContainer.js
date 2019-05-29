@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import ListNews from '../components/ListNews';
 
 class NewsContainer extends Component {
 
@@ -11,7 +12,7 @@ class NewsContainer extends Component {
 
   render(){
     return (
-      <div>Hi I'm a News Container.</div>
+      <div><ListNews news={this.state.news} /></div>
     );
   }
 
