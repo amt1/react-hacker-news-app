@@ -1,8 +1,12 @@
 import React from 'react';
+import NewsItem from './NewsItem';
 
 const ListNews = (props) => {
 
-  return <div>Hi I'm a ListNews</div>;
+  const items = props.news.map((item) => {
+    return <NewsItem newsItem = {item} />
+  })
+  return <div>{items}</div>;
 
 }
 export default ListNews;

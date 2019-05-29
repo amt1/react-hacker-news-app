@@ -1,18 +1,23 @@
 import React, {Component} from 'react';
 import ListNews from '../components/ListNews';
+import SearchBar from '../components/SearchBar';
 
 class NewsContainer extends Component {
 
   constructor(props){
     super(props);
     this.state = {
-      news: []
+      news: [],
+      filteredNews: []
     }
   }
 
   render(){
     return (
-      <div><ListNews news={this.state.news} /></div>
+      <div>
+        <SearchBar onSubmit={this.handleSubmit}/>
+        <ListNews news={this.state.news} />
+      </div>
     );
   }
 
@@ -34,6 +39,10 @@ class NewsContainer extends Component {
         })
       })
 
+      }
+
+      handleSubmit(evt){
+          console.log(evt);
       }
 }
 export default NewsContainer;
